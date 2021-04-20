@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Chivo:400|Overpass:400");
 
 :root {
+  /* Define colors as colors */
   --green: #00ebc7;
   --red: #ff5470;
   --yellow: #fde24f;
@@ -38,6 +39,14 @@ body {
 
 p {
   margin-bottom: 1rem;
+  max-width: 40em;
+}
+
+p a,
+blockquote a {
+  color: var(--black);
+  text-decoration: none;
+  border-bottom: solid 2px var(--green);
 }
 
 h1,
@@ -123,3 +132,9 @@ h1 {
 .header {
     font-size: 1rem;
 } */
+
+blockquote {
+  margin: 10px;
+  padding: 2em;
+  background: white;
+}
