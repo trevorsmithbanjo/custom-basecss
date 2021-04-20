@@ -23,6 +23,7 @@
   /* Type */
   --headingFont: "Chivo", sans-serif;
   --bodyFont: "Overpass", sans-serif;
+  --baseFontSize: 100%;
   --h1: 3.052rem;
   --h2: 2.441rem;
   --h3: 1.953rem;
@@ -40,18 +41,59 @@
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --level-5: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   --inner-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+
+  /* Positioning */
+  --containerPadding: 2.5%;
+  --headerHeight: 3rem;
 }
 
 /* From Type Scale */
 
 html {
-  font-size: 112.5%;
+  font-size: var(--baseFontSize);
+  box-sizing: border-box;
 } /*18px*/
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
 
 body {
   font-family: var(--bodyFont);
   font-weight: 400;
   line-height: 1.75;
+  background: var(--background);
+  color: var(--textColor);
+  padding-bottom: 300px;
+}
+
+header {
+  --headerBackground: var(--darkBlue);
+  color: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: var(--headerHeight);
+  background: var(--headerBackground);
+  box-shadow: var(--level-2);
+  padding: 0 var(--containerPadding);
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;
+}
+
+header nav a + a {
+  margin-left: 10px;
+}
+
+footer {
+  background: var(--black);
+  color: white;
 }
 
 p {
@@ -101,12 +143,6 @@ h5 {
 small,
 .text_small {
   font-size: var(--smallText);
-}
-
-body {
-  background: var(--background);
-  color: var(--textColor);
-  padding-bottom: 300px;
 }
 
 .dark {
@@ -222,13 +258,13 @@ button.small {
 }
 
 .layout {
-  margin: 0 auto;
-  width: 95%;
+  /* top padding is header height + whatever visual padding we want */
+  padding: calc(3rem + var(--headerHeight)) var(--containerPadding);
 }
 
 .grid {
   --gridCols: 2;
-  display: grid;
+  display: block;
   grid-template-columns: repeat(var(--gridCols), 1fr);
 }
 
@@ -243,7 +279,7 @@ button.small {
 .flex {
   --justifyContent: space-between;
   --alignItems: stretch;
-  display: flex;
+  display: block;
   justify-content: var(--justifyContent);
   align-items: var(--alignItems);
 }
@@ -258,4 +294,21 @@ button.small {
 
 .flex-center-y {
   --alignItems: center;
+}
+
+@media only screen and (min-width: 500px) {
+  :root {
+    --baseFontSize: 112.5%;
+  }
+  .grid {
+    display: grid;
+  }
+  .flex {
+    display: flex;
+  }
+}
+
+.fake-logo {
+  font-size: var(--baseFontSize);
+  margin: 0;
 }
