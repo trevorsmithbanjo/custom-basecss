@@ -9,13 +9,19 @@
   --darkBlue: #00214d;
   --grey: #bfbfbfbf;
   --lightGrey: #f2f4f6;
+  --white: #fff;
+  --darkGrey: #222;
 
   /* Define Colors Intentions */
   --primary: var(--green);
   --danger: var(--red);
   --background: var(--lightGrey);
   --textColor: var(--black);
+  --buttonTextColor: var(--black);
   --lineColor: var(--grey);
+  --cardBg: var(--white);
+  --headerBackground: var(--darkBlue);
+  --footerBackground: var(--black);
 
   /* Styles */
   --line: solid 1px var(--lineColor);
@@ -45,6 +51,7 @@
   /* Positioning */
   --containerPadding: 2.5%;
   --headerHeight: 3rem;
+  --borderRadius: 10px;
 }
 
 /* From Type Scale */
@@ -69,7 +76,6 @@ body {
 }
 
 header {
-  --headerBackground: var(--darkBlue);
   color: white;
   position: fixed;
   left: 0;
@@ -92,7 +98,7 @@ header nav a + a {
 
 footer {
   --footerTextColor: var(--lightGrey);
-  background: var(--black);
+  background: var(--footerBackground);
   color: var(--footerTextColor);
   padding: 2rem var(--containerPadding);
   text-align: center;
@@ -118,7 +124,7 @@ p {
 
 p a,
 blockquote a {
-  color: var(--black);
+  color: var(--textColor);
   text-decoration: none;
   border-bottom: solid 2px var(--primary);
 }
@@ -158,11 +164,6 @@ h5 {
 small,
 .text_small {
   font-size: var(--smallText);
-}
-
-.dark {
-  --background: var(--black);
-  --textColor: var(--lightGrey);
 }
 
 /* Least to Most */
@@ -205,7 +206,7 @@ h1 {
 blockquote {
   margin: 10px;
   padding: 2em;
-  background: white;
+  background: var(--cardBg);
   box-shadow: var(--level-3);
 }
 
@@ -241,9 +242,8 @@ hr {
 
 button {
   --buttonColor: var(--primary);
-
   appearance: none;
-  color: var(--textColor);
+  color: var(--buttonTextColor);
   background-color: var(--buttonColor);
   border: none;
   border-radius: 10px;
@@ -291,6 +291,12 @@ button.small {
   --gridCols: 4;
 }
 
+.split {
+  display: grid;
+  grid-template-columns: 33% 67%;
+  grid-gap: 20px;
+}
+
 .flex {
   --justifyContent: space-between;
   --alignItems: stretch;
@@ -326,4 +332,92 @@ button.small {
 .fake-logo {
   font-size: var(--baseFontSize);
   margin: 0;
+}
+
+.card {
+  padding: 2em;
+  background: var(--cardBg);
+  box-shadow: var(--level-3);
+  border-radius: var(--borderRadius);
+}
+
+/* First item will never have margin top */
+.card > *:first-child {
+  margin-top: 0;
+}
+
+/* Last item will never have margin bottom */
+.card > *:last-child {
+  margin-bottom: 0;
+}
+
+.dark {
+  --cardBg: var(--darkGrey);
+  --background: var(--black);
+  --textColor: var(--lightGrey);
+  --headerBackground: var(--darkGrey);
+  --buttonTextColor: var(--black);
+  --footerBackground: var(--darkGrey);
+}
+
+.oled {
+  --black: #000;
+  --cardBg: var(--darkGrey);
+  --headerBackground: var(--darkGrey);
+  --buttonTextColor: var(--black);
+  --footerBackground: var(--darkGrey);
+}
+
+.theme {
+  /* Define colors as colors */
+  --green: #4fc4cf;
+  --red: #ff5470;
+  --yellow: #fbdd74;
+  --black: #181818;
+  --darkBlue: #994ff3;
+  --grey: #bfbfbfbf;
+  --lightGrey: #f2f4f6;
+  --white: #fff;
+  --darkGrey: #222;
+
+  /* Define Colors Intentions */
+  --primary: var(--green);
+  --danger: var(--red);
+  --background: var(--yellow);
+  --textColor: var(--black);
+  --buttonTextColor: var(--black);
+  --lineColor: var(--grey);
+  --cardBg: var(--white);
+  --headerBackground: var(--black);
+  --footerBackground: var(--black);
+
+  /* Styles */
+  --line: solid 5px var(--yellow);
+
+  /* Type */
+  --headingFont: "Helvetica";
+  --bodyFont: "Overpass", sans-serif;
+  --baseFontSize: 110%;
+  --h1: 3.052rem;
+  --h2: 2.441rem;
+  --h3: 1.953rem;
+  --h4: 1.563rem;
+  --h5: 1.25rem;
+  --smallText: 0.8rem;
+
+  /* Elevation */
+  --level-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --level-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --level-3: 0 10px 15px -3px rgba(0, 0, 0, 0.5),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --level-4: 0 20px 25px -5px rgba(0, 0, 0, 0.5),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --level-5: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --inner-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+
+  /* Positioning */
+  --containerPadding: 2.5%;
+  --headerHeight: 4rem;
+  --borderRadius: 25px;
 }
